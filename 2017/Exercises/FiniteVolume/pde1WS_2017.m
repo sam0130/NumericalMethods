@@ -76,12 +76,14 @@ x = x(1:end-1) + diff(x)/2;
 T0 = 20*ones(size(x));
 odefun2 = @(t,T) odefun(t,T,x,m,l,s,Tl,Tr);
 [t,T] = ode15s(odefun2,linspace(0,tmax,7),T0);
+figure
 plot(x,T)
 legend(num2str(t/60,'t=%5.0fm'));
 xlabel('x'); ylabel('T');
 %%
 odefun2 = @(t,T) odefunNeumann(t,T,x,m,l,s,Tr);
 [t,T] = ode15s(odefun2,linspace(0,3600*6,7),T0);
+figure
 plot(x,T)
 legend(num2str(t/3600,'t=%5.0fh'));
 xlabel('x'); ylabel('T');
